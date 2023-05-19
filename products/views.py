@@ -4,14 +4,15 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
-from .models import Hoodie
-from .models import Cargo
-from .models import Jean
-from .models import Oversize
-from .models import Jacket
 from .models import Product
-from .models import RegUser
+from .models import Contact
 from .models import Cart, CartItem
+# from .models import Hoodie
+# from .models import Cargo
+# from .models import Jean
+# from .models import Oversize
+# from .models import Jacket
+# from .models import RegUser
 
 
 def signup(request):
@@ -50,13 +51,43 @@ def signin(request):
 
 def signout(request):
     logout(request)
-    messages.success(request, "Signed out successfully!")
+    # messages.success(request, "Signed out successfully!")
     return render(request, 'products/products.html')
 
 
 def cart(request):
     context = {}
-    return render(request, "cart.html", context)
+    return render(request, 'products/cart.html', context)
+
+
+def checkout(request):
+    context = {}
+    return render(request, 'products/checkout.html', context)
+
+
+def typage(request):
+    context = {}
+    return render(request, 'products/typage.html', context)
+
+
+def typage2(request):
+    context = {}
+    return render(request, 'products/typage2.html', context)
+
+
+def contactus(request):
+    if request.method == "POST":
+        contact = Contact()
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        contact.name = name
+        contact.email = email
+        contact.subject = subject
+        contact.save()
+        return render(request, 'products/typage2.html')
+
+    return render(request, 'products/contactus.html', {})
 
 
 def add_to_cart(request):
@@ -77,7 +108,6 @@ def add_to_cart(request):
 
 
 def products(request):
-    hood = Hoodie.objects.all()
     prod = Product.objects.all()
     prohood = prod.filter(category='Hoodie')
     procarg = prod.filter(category='Cargo')
@@ -85,13 +115,14 @@ def products(request):
     proover = prod.filter(category='Oversize')
     projack = prod.filter(category='Jacket')
 
-    x = {'hoodie': hood.filter()}
-    carg = Cargo.objects.all()
-    z = {'cargo': carg.filter()}
-    jean = Jean.objects.all()
-    oversize = Oversize.objects.all()
-    jacket = Jacket.objects.all()
-    all = {'hoodie': hood, 'cargo': carg, 'jeans': jean,
-           'oversize': oversize, 'jacket': jacket}
+    # hood = Hoodie.objects.all()
+    # x = {'hoodie': hood.filter()}
+    # carg = Cargo.objects.all()
+    # z = {'cargo': carg.filter()}
+    # jean = Jean.objects.all()
+    # oversize = Oversize.objects.all()
+    # jacket = Jacket.objects.all()
+    # all = {'hoodie': hood, 'cargo': carg, 'jeans': jean,
+    #        'oversize': oversize, 'jacket': jacket}
     return render(request, 'products/products.html', {'hoodie': prohood, 'cargo': procarg, 'jeans': projean,
                                                       'oversize': proover, 'jacket': projack})

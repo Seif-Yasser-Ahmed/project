@@ -61,11 +61,13 @@
                         <a class="nav-link" href="signin">Sign in</a> <!--goes to footer-->
                     </li>
                     {% endif %}
+                    {% if user.is_authenticated%}
                     <li class="cart nav-item ms-2"> <!--cart icon-->
                         <a href="cart" title="Go to cart">
                             <i class="fa fa-shopping-cart fa-2x" style=" margin-top: 3px;"></i>
                         </a>
                     </li>
+                    {% endif %}
                 </ul>
 
                 <form class="d-flex mt-2" role="search"> <!--search button-->
@@ -122,6 +124,7 @@
             </button>
         </div>
         <!--end of slider-->
+        {% if user.is_authenticated%}
         <div class="all-cards">
             <br><br><br><br><br><br><br><br>
             <!--start of Hoodies section-->
@@ -285,13 +288,14 @@
             </div>
             <!--end of Jackets section-->
         </div>
+        {% endif %}
     </nav>
     <br><br>
     <!--start of the footer-->
     <div id="footer" class="footer">
         <div class="container">
             <div class="box"> <!--social media section-->
-                <a href="index.html">
+                <a href="../products">
                     <h3>Brands Geeks</h3>
                 </a>
                 <ul class="social" style="margin-right:30px ;">
@@ -341,7 +345,7 @@
                     <li><a href="#Jeans">Jeans</a></li>
                     <li><a href="#Oversized">Oversized</a></li>
                     <li><a href="#Jackets">Jackets</a></li>
-                    <li><a href="contact us/index.html">Message Us</a></li>
+                    <li><a href="contactus">Message Us</a></li>
                 </ul>
             </div>
             <div class="box footer-gallery "> <!--team members' pics section-->

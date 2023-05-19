@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,12 +9,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Cart</title>
 </head>
 
 <body>
     <div class="header">
-        <a href="../index.html"><img src="../Brand_Geeks-page-0-removebg.png" alt=""></a>
+        <img src="{% static 'images/Brand_Geeks-page-0-removebg.png' %}" alt="">
         <div class="headp">
             <p> My Cart</p>
         </div>
@@ -22,7 +23,7 @@
         <div class="cart">
             <div class="products">
                 <div class="product">
-                    <img src="../Cargo/3.jpg" width="200">
+                    <img src="{% static 'images/Cargo/3.jpg' %}" width="200">
                     <div class="products-info">
                         <h5 class="product-name" style="padding-top: 10px;"> Green Cargo </h4>
                             <h5 class="product-price"> EGP 499</h3>
@@ -37,7 +38,7 @@
                     </div>
                 </div>
                 <div class="product">
-                    <img src="../hoodies/2.jpeg" width="200">
+                    <img src="{% static 'images/hoodies/2.jpeg' %}" width="200">
                     <div class="products-info">
                         <h5 class="product-name" style="padding-top: 10px;"> Grey Hoodie </h4>
                             <h5 class="product-price"> EGP 799</h3>
@@ -63,11 +64,11 @@
                         <span>Discout:</span>
                         <span>349.25</span>
                     </p>
-                    <a href="../chechkout/chechkout.html">Proceed to Checkout</a>
+                    <a href="checkout">Proceed to Checkout</a>
                 </div>
             </div>
         </div>
-        <script src="cart.js"></script>
+        <script src="{% static 'js/cart.js' %}"></script>
 </body>
 
 </html>
